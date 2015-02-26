@@ -4,7 +4,7 @@ Gem::Specification.new do |spec|
   spec.version       = "0.1.2"
   spec.authors       = ["TAKEI Yuya"]
   spec.summary       = "Jsonl formatter plugin for Embulk"
-  spec.description   = ""
+  spec.description   = "Formats Embulk Formatter Jsonl files for other file output plugins."
   spec.email         = ["takei.yuya+github@gmail.com"]
   spec.licenses      = ["MIT"]
   spec.homepage      = "https://github.com/takei-yuya/embulk-formatter-jsonl"
