@@ -1,4 +1,4 @@
-require 'json'
+require 'jrjackson'
 
 module Embulk
   module Formatter
@@ -62,7 +62,7 @@ module Embulk
           @schema.each do |col|
             datum[col.name] = record[col.index]
           end
-          @current_file.write "#{datum.to_json}#{@newline}".encode(@encoding)
+          @current_file.write "#{JrJackson::Json.dump(datum, :mode => :compat)}#{@newline}".encode(@encoding)
         end
       end
 
