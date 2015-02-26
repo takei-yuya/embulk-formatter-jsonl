@@ -33,8 +33,8 @@ module Embulk
             @current_file_size = 0
           end
           datum = {}
-          @schema.zip(record).each do |col,v|
-            datum[col.name] = v
+          @schema.each do |col|
+            datum[col.name] = record[col.index]
           end
           @current_file.write "#{datum.to_json}\n"
         end
