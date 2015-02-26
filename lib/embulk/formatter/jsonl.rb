@@ -1,3 +1,5 @@
+require 'json'
+
 module Embulk
   module Formatter
 
@@ -7,8 +9,6 @@ module Embulk
       def self.transaction(config, schema, &control)
         # configuration code:
         task = {
-          "property1" => config.param("property1", :string),
-          "property2" => config.param("property2", :integer, default: 0),
         }
 
         yield(task)
@@ -16,8 +16,6 @@ module Embulk
 
       def init
         # initialization code:
-        @property1 = task["property1"]
-        @property2 = task["property2"]
 
         # your data
         @current_file == nil
@@ -34,7 +32,11 @@ module Embulk
             @current_file = file_output.next_file
             @current_file_size = 0
           end
-          @current_file.write "|mydata|"
+          datum = {}
+          @schema.zip(record).each do |col,v|
+            datum[col.name] = v
+          end
+          @current_file.write "#{datum.to_json}\n"
         end
       end
 

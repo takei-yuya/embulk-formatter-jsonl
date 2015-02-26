@@ -1,6 +1,6 @@
 # Jsonl formatter plugin for Embulk
 
-TODO: Write short description here
+Format datum to jsonl, 1 json per 1 line
 
 ## Overview
 
@@ -10,9 +10,6 @@ TODO: Write short description here
 
 ## Configuration
 
-- **property1**: description (string, required)
-- **property2**: description (integer, default: default-value)
-
 ## Example
 
 ```yaml
@@ -20,8 +17,6 @@ out:
   type: any output input plugin type
   formatter:
     type: jsonl
-    property1: example1
-    property2: example2
 ```
 
 ## Build
