@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.description   = ""
   spec.email         = ["takei.yuya+github@gmail.com"]
   spec.licenses      = ["MIT"]
-  # TODO: spec.homepage      = "https://github.com/takei+github/embulk-formatter-jsonl"
+  spec.homepage      = "https://github.com/takei-yuya/embulk-formatter-jsonl"
 
   spec.files         = `git ls-files`.split("\n") + Dir["classpath/*.jar"]
   spec.test_files    = spec.files.grep(%r{^(test|spec)/})
