@@ -17,6 +17,8 @@ Format datum to jsonl, 1 json per 1 line
     - CR: use `\r`(0x0d) as newline character
     - NUL: use `\0`(0x00) instead of newline (for example, `xargs -0` will be good friend with it)
     - NO: dump JSONs in a line
+- **date_format**: date format. ex: "yyyy-MM-dd'P'HH:mm:ss.SSSX" (string default: nil)
+- **timezone**: timezone. "JST" (string default: nil)
 
 ## Example
 

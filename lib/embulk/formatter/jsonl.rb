@@ -27,6 +27,8 @@ module Embulk
         task = {
           'encoding' => config.param('encoding', :string, default: 'UTF-8'),
           'newline' => config.param('newline', :string, default: 'LF'),
+          'date_format' => config.param('date_format', :string, default: nil),
+          'timezone' => config.param('timezone', :string, default: nil )
         }
 
         encoding = task['encoding'].upcase
@@ -46,6 +48,11 @@ module Embulk
         # your data
         @current_file == nil
         @current_file_size = 0
+        @opts = { :mode => :compat }
+        date_format = task['date_format']
+        timezone = task['timezone']
+        @opts[:date_format] = date_format if date_format
+        @opts[:timezone] = timezone if timezone
       end
 
       def close
@@ -62,7 +69,7 @@ module Embulk
           @schema.each do |col|
             datum[col.name] = record[col.index]
           end
-          @current_file.write "#{JrJackson::Json.dump(datum, :mode => :compat)}#{@newline}".encode(@encoding)
+          @current_file.write "#{JrJackson::Json.dump(datum, @opts )}#{@newline}".encode(@encoding)
         end
       end
 
