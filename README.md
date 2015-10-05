@@ -22,6 +22,7 @@ Format datum to jsonl, 1 json per 1 line
     - "yyyy-MM-dd'T'HH:mm:ss.SSSZ": 2015-04-26T17:23:25.123+0900
     - For more information: [SimpleDateFormat class document](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html)
 - **timezone**: timezone. "JST" (string default: nil)
+- **json_columns**: json formatted column name. (array default:[])
 
 ## Example
 
