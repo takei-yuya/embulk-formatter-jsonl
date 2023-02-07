@@ -48,7 +48,7 @@ module Embulk
         @json_columns = task["json_columns"]
 
         # your data
-        @current_file == nil
+        @current_file = file_output.next_file
         @current_file_size = 0
         @opts = { :mode => :compat }
         date_format = task['date_format']
@@ -63,7 +63,7 @@ module Embulk
       def add(page)
         # output code:
         page.each do |record|
-          if @current_file == nil || @current_file_size > 32*1024
+          if @current_file_size > 32*1024
             @current_file = file_output.next_file
             @current_file_size = 0
           end
